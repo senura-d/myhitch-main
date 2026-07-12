@@ -12,11 +12,10 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
 
-// Scroll-scrubbed backdrop: the about loop animation. The first 20 frames are
-// a near-blank blue fade-in, so we skip them and start at frame 21 (172 frames).
-const SEQ_COUNT = 172;
+// Scroll-scrubbed backdrop: the new ABOUT US letters shimmer animation (192 frames).
+const SEQ_COUNT = 192;
 const seqSrc = (i: number) =>
-  `/about-seq/frame-${String(i + 20).padStart(3, "0")}.jpg`;
+  `/about-seq/frame-${String(i).padStart(3, "0")}.jpg`;
 
 export default function AboutHero() {
   const reduce = useReducedMotion();
@@ -52,15 +51,13 @@ export default function AboutHero() {
 
   return (
     <div ref={wrapperRef} style={{ height: "320vh" }} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#4b6f96]">
-        {/* Scroll-scrubbed image-sequence backdrop. A light blur (+ slight
-            upscale to keep blurred edges off-screen) masks the placeholder
-            label text on the moving folders without hiding the scene. */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+        {/* Scroll-scrubbed image-sequence backdrop — crisp, no blur */}
         <ScrollImageSequence
           progress={p}
           frameCount={SEQ_COUNT}
           srcFor={seqSrc}
-          className="absolute inset-0 z-0 h-full w-full scale-110 blur-[5px]"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
         />
 
         {/* Dark left wash so the white copy stays legible over the blue scene */}
