@@ -8,15 +8,12 @@ import { site } from "@/content/site";
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2" aria-label="MYHitch home">
+    <Link href="/" className="flex items-center" aria-label="MYHitch home">
       <img
         src="/MYHitch-Logo-transparent-scaled-e1777265547150.png"
         alt="MYHitch Logo"
-        className="h-8 w-auto object-contain"
+        className="h-12 w-auto object-contain"
       />
-      <span className="font-display text-lg font-semibold tracking-tight text-black">
-        {site.name}
-      </span>
     </Link>
   );
 }
@@ -54,55 +51,62 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+      {/* Full-width edge-to-edge glass bar */}
       <div
-        className={`mx-auto flex max-w-7xl items-center gap-4 px-4 transition-all duration-300 sm:px-6 ${
-          scrolled ? "py-2.5" : "py-4"
+        className={`w-full glass border-b border-white/10 shadow-lg backdrop-blur-lg transition-all duration-300 bg-white/5 ${
+          scrolled ? "bg-white/10 border-white/15 py-1.5" : "py-2.5"
         }`}
       >
-        <div
-          className={`flex w-full items-center gap-4 rounded-2xl border border-white/40 bg-white/70 px-3 py-2 shadow-lg shadow-black/10 backdrop-blur-md transition-all duration-300 ${
-            scrolled ? "bg-white/80" : ""
-          }`}
-        >
-          <Logo />
+        {/* Content wrapper centered to match the main page grid */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 flex w-full items-center justify-between">
+          
+          {/* Left side: Logo */}
+          <div className="flex-1 flex justify-start">
+            <Logo />
+          </div>
 
-          <nav className="ml-4 hidden items-center gap-1 lg:flex" aria-label="Primary">
+          {/* Center: Primary nav links */}
+          <nav className="hidden items-center gap-1 md:flex justify-center" aria-label="Primary">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-black/80 transition-colors hover:text-navy-800"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-black/80 transition-colors hover:text-navy-800 whitespace-nowrap"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          <div className="ml-auto hidden items-center gap-2 md:flex">
-            <CurrencyToggle />
-            <Link
-              href="/contact"
-              className="rounded-lg px-3 py-2 text-sm font-medium text-black transition-colors hover:text-navy-800"
+          {/* Right side: Action buttons and mobile menu trigger */}
+          <div className="flex-1 flex items-center justify-end gap-4">
+            <div className="hidden items-center gap-2 md:flex">
+              <CurrencyToggle />
+              <Link
+                href="/login"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-black transition-colors hover:text-navy-800"
+              >
+                Sign in
+              </Link>
+              <a
+                href={site.storeUrl}
+                className="shiny-btn btn btn-primary rounded-full px-4 py-2 text-sm"
+              >
+                Start Selling
+              </a>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="grid h-10 w-10 place-items-center rounded-xl text-black hover:bg-black/5 md:hidden"
+              aria-label="Open menu"
             >
-              Sign in
-            </Link>
-            <a
-              href={site.storeUrl}
-              className="shiny-btn btn btn-primary rounded-full px-4 py-2 text-sm"
-            >
-              Start Selling
-            </a>
+              <Menu size={22} />
+            </button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="ml-auto grid h-10 w-10 place-items-center rounded-xl text-black hover:bg-black/5 md:hidden"
-            aria-label="Open menu"
-          >
-            <Menu size={22} />
-          </button>
         </div>
       </div>
 
@@ -154,7 +158,7 @@ export default function Navbar() {
               Start Selling
             </a>
             <Link
-              href="/contact"
+              href="/login"
               onClick={() => setOpen(false)}
               className="btn btn-ghost rounded-full px-5 py-3.5 text-base"
             >

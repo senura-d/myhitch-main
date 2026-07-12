@@ -34,6 +34,11 @@ export default function AboutHero() {
 
   // Intro copy slides out as you scroll into the animation.
   const copyY = useTransform(p, [0, 0.3], [0, 900]);
+  // Closing line slides in as the scene settles, then holds.
+  const closeHeadY = useTransform(p, [0.4, 0.58], [-200, 0]);
+  const closeSubY = useTransform(p, [0.38, 0.48], [150, 0]);
+  const copyOpacity = useTransform(p, [0, 0.28], [1, 0]);
+  const closeOpacity = useTransform(p, [0.34, 0.44], [0, 1]);
 
   const fadeUp = (delay: number) => ({
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
@@ -70,7 +75,7 @@ export default function AboutHero() {
         {/* Intro copy — left, vertically centered; slides out on scroll */}
         <motion.div
           className="absolute inset-0 z-10 flex items-center"
-          style={reduce ? { opacity: 0 } : { y: copyY }}
+          style={reduce ? { opacity: 0 } : { y: copyY, opacity: copyOpacity }}
         >
           <div className="w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-xl text-left">
@@ -116,6 +121,26 @@ export default function AboutHero() {
                   Get in touch
                 </a>
               </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Frame 2 copy — left-aligned, vertically centered; slides up into view */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-10 flex items-center"
+          style={reduce ? undefined : { y: closeSubY, opacity: closeOpacity }}
+        >
+          <div className="w-full px-6 sm:px-10 lg:px-16">
+            <div className="max-w-xl text-left text-white">
+              <p className="eyebrow mb-1 text-sky-200">Our Mission & Vision</p>
+              <h2 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Connecting
+                <br />
+                <span className="text-sky-200 font-bold">Australia.</span>
+              </h2>
+              <p className="mt-6 text-sm sm:text-base leading-relaxed text-sky-100 font-medium">
+                Building a fairer, faster, and more connected digital economy for communities and businesses.
+              </p>
             </div>
           </div>
         </motion.div>

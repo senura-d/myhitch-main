@@ -37,7 +37,9 @@ export default function PlatformsHero() {
   const copyY = useTransform(p, [0, 0.3], [0, 900]);
   // Closing line slides in as the scene settles, then holds.
   const closeHeadY = useTransform(p, [0.4, 0.58], [-200, 0]);
-  const closeSubY = useTransform(p, [0.44, 0.62], [300, 0]);
+  const closeSubY = useTransform(p, [0.38, 0.48], [150, 0]);
+  const copyOpacity = useTransform(p, [0, 0.28], [1, 0]);
+  const closeOpacity = useTransform(p, [0.34, 0.44], [0, 1]);
 
   const fadeUp = (delay: number) => ({
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
@@ -72,7 +74,7 @@ export default function PlatformsHero() {
         {/* Intro copy — left, vertically centered; slides out on scroll */}
         <motion.div
           className="absolute inset-0 z-10 flex items-center"
-          style={reduce ? { opacity: 0 } : { y: copyY }}
+          style={reduce ? { opacity: 0 } : { y: copyY, opacity: copyOpacity }}
         >
           <div className="w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-xl text-left">
@@ -126,8 +128,25 @@ export default function PlatformsHero() {
           </div>
         </motion.div>
 
-        {/* Closing heading — top-center, slides in as the scene settles */}
-
+        {/* Frame 2 copy — left-aligned, vertically centered; slides up into view */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-10 flex items-center"
+          style={reduce ? undefined : { y: closeSubY, opacity: closeOpacity }}
+        >
+          <div className="w-full px-6 sm:px-10 lg:px-16">
+            <div className="max-w-xl text-left">
+              <p className="eyebrow mb-1 text-black">Eight Platforms, One Account</p>
+              <h2 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-black sm:text-5xl lg:text-6xl">
+                One login,
+                <br />
+                <span className="aurora-text font-semibold">unlimited access.</span>
+              </h2>
+              <p className="mt-6 text-sm sm:text-base leading-relaxed text-black/80 font-medium">
+                From travel and logistics to local shopping, the MYHitch network has you covered.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         <span className="sr-only">{site.positioning}</span>
       </div>

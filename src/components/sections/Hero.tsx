@@ -80,10 +80,13 @@ export default function Hero() {
   // ── Part 1 text exits by sliding out of frame (motion, not fade) ──
   const taglineY = useTransform(p, [0, 0.24], [0, -320]);
   const heroTextY = useTransform(p, [0, 0.3], [0, 500]);
+  const taglineOpacity = useTransform(p, [0, 0.22], [1, 0]);
+  const heroTextOpacity = useTransform(p, [0, 0.28], [1, 0]);
 
   // ── Part 2 text slides in as the hub lands, then holds ──
   const f2HeadY = useTransform(p, [0.36, 0.52], [-220, 0]);
-  const f2SubY = useTransform(p, [0.4, 0.56], [340, 0]);
+  const f2SubY = useTransform(p, [0.38, 0.48], [150, 0]);
+  const f2Opacity = useTransform(p, [0.34, 0.44], [0, 1]);
 
   const fadeUp = (delay: number) => ({
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 16 },
@@ -118,7 +121,7 @@ export default function Hero() {
         {/* Frame 1 tagline — upper-left, slides up out of frame on scroll */}
         <motion.div
           className="pointer-events-none absolute left-0 top-[22%] z-10 w-full px-6 sm:px-10 lg:px-16"
-          style={reduce ? { opacity: 0 } : { y: taglineY }}
+          style={reduce ? { opacity: 0 } : { y: taglineY, opacity: taglineOpacity }}
         >
           <motion.p
             className="font-display max-w-md text-2xl font-light leading-tight tracking-tight text-black sm:text-3xl lg:text-4xl"
@@ -133,7 +136,7 @@ export default function Hero() {
         {/* Frame 1 hero copy — bottom-left, slides down out of frame on scroll */}
         <motion.div
           className="absolute bottom-28 left-0 z-10 w-full px-6 sm:px-10 lg:px-16"
-          style={reduce ? { opacity: 0 } : { y: heroTextY }}
+          style={reduce ? { opacity: 0 } : { y: heroTextY, opacity: heroTextOpacity }}
         >
           <div className="mr-auto max-w-2xl">
             <motion.p
@@ -211,26 +214,24 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Frame 2 heading — top-center, slides down into view over the hub */}
+        {/* Frame 2 copy — left-aligned, vertically centered; slides up into view */}
         <motion.div
-          className="pointer-events-none absolute left-0 top-[13%] z-10 w-full px-6 text-center"
-          style={reduce ? undefined : { y: f2HeadY }}
+          className="pointer-events-none absolute inset-0 z-10 flex items-center"
+          style={reduce ? undefined : { y: f2SubY, opacity: f2Opacity }}
         >
-          <p className="eyebrow mb-1 text-black">The connected core</p>
-          <p className="font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            <span className="text-black font-semibold">This is MYHitch.</span>
-          </p>
-        </motion.div>
-
-        {/* Frame 2 subline — bottom-center, slides up into view */}
-        <motion.div
-          className="pointer-events-none absolute bottom-24 left-0 z-10 w-full px-6 text-center"
-          style={reduce ? undefined : { y: f2SubY }}
-        >
-          <p className="mx-auto max-w-xl text-sm sm:text-base leading-relaxed text-black/80">
-            Every platform, payment and partner — connected through one
-            intelligent core.
-          </p>
+          <div className="w-full px-6 sm:px-10 lg:px-16">
+            <div className="max-w-xl text-left">
+              <p className="eyebrow mb-1 text-black">The connected core</p>
+              <h2 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-black sm:text-5xl lg:text-6xl">
+                This is
+                <br />
+                <span className="aurora-text font-semibold">MYHitch.</span>
+              </h2>
+              <p className="mt-6 text-sm sm:text-base leading-relaxed text-black/80 font-medium">
+                Every platform, payment and partner — connected through one intelligent core.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         <span className="sr-only">{site.positioning}</span>

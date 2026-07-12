@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Rocket, Wallet, LineChart, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PageHeader from "@/components/PageHeader";
+import PartnerHero from "@/components/PartnerHero";
 import { PricingCards } from "@/components/sections/MarketplaceCTA";
 import { Reveal, RevealItem } from "@/components/motion/Reveal";
 import { site } from "@/content/site";
@@ -33,12 +33,7 @@ export default function PartnerPage() {
     <>
       <Navbar />
       <main className="relative flex-1">
-        <PageHeader
-          eyebrow="Become a Partner"
-          title="Sell with"
-          highlight="zero upfront fees."
-          subtitle={`Join free, list unlimited products and reach buyers across Australia and beyond. Free shipping on orders over $${site.freeShippingThreshold}.`}
-        />
+        <PartnerHero />
 
         {/* Value props */}
         <SectionTransition variant="slide" parallaxStrength={0.05}>
@@ -63,7 +58,7 @@ export default function PartnerPage() {
 
         {/* Pricing */}
         <SectionTransition variant="lift" parallaxStrength={0.08}>
-          <section className="mx-auto max-w-4xl px-5 py-12 sm:px-8">
+          <section id="plans" className="mx-auto max-w-4xl px-5 py-12 sm:px-8">
             <Reveal className="mb-10 text-center">
               <h2 className="font-display text-3xl font-semibold tracking-tight text-frost sm:text-4xl">
                 Simple, fair pricing
