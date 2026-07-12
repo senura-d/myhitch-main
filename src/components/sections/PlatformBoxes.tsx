@@ -9,8 +9,9 @@ import {
   useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion";
+import { asset } from "@/lib/asset";
 
-const VIDEO_SRC = "/card%20animation%20.mp4";
+const VIDEO_SRC = asset("/card%20animation%20.mp4");
 
 export default function PlatformBoxes() {
   const reduce = useReducedMotion();

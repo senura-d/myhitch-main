@@ -11,12 +11,13 @@ import {
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+import { asset } from "@/lib/asset";
 
 // Scroll-scrubbed backdrop: the two rotating contact icons (123 frames).
 // Scroll down plays forward, scroll up reverses.
 const SEQ_COUNT = 123;
 const seqSrc = (i: number) =>
-  `/contact-seq2/frame-${String(i).padStart(3, "0")}.jpg`;
+  asset(`/contact-seq2/frame-${String(i).padStart(3, "0")}.jpg`);
 
 export default function ContactHero() {
   const reduce = useReducedMotion();

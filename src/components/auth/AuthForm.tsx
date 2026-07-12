@@ -8,6 +8,7 @@ import {
   Globe, Compass, CheckCircle2
 } from "lucide-react";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 export default function AuthForm() {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
@@ -73,7 +74,7 @@ export default function AuthForm() {
           </Link>
           <div className="flex items-center">
             <img
-              src="/MYHitch-Logo-transparent-scaled-e1777265547150.png"
+              src={asset("/MYHitch-Logo-transparent-scaled-e1777265547150.png")}
               alt="MYHitch Logo"
               className="h-10 w-auto object-contain"
             />

@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/content/nav";
 import { site } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 function Logo() {
   return (
     <Link href="/" className="flex items-center" aria-label="MYHitch home">
       <img
-        src="/MYHitch-Logo-transparent-scaled-e1777265547150.png"
+        src={asset("/MYHitch-Logo-transparent-scaled-e1777265547150.png")}
         alt="MYHitch Logo"
         className="h-12 w-auto object-contain"
       />

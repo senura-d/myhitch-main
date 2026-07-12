@@ -11,12 +11,13 @@ import {
 import { ArrowRight, Sparkles } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+import { asset } from "@/lib/asset";
 
 // Scroll-scrubbed backdrop: the platforms build-up animation (192 frames).
 // Scroll down plays forward, scroll up reverses.
 const SEQ_COUNT = 192;
 const seqSrc = (i: number) =>
-  `/platforms-seq/frame-${String(i).padStart(3, "0")}.jpg`;
+  asset(`/platforms-seq/frame-${String(i).padStart(3, "0")}.jpg`);
 
 export default function PlatformsHero() {
   const reduce = useReducedMotion();

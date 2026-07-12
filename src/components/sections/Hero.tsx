@@ -11,13 +11,14 @@ import {
 import { ShieldCheck, Wallet, Sparkles } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+import { asset } from "@/lib/asset";
 
 // Scroll-scrubbed backdrop: the MYHITCH build-up animation as an image
 // sequence. Part 1 = frames 1→65 (chip rotates to centre), part 2 = 66→218
 // (settles into the final hub). Scroll down plays forward, up reverses.
 const SEQ_COUNT = 218;
 const seqSrc = (i: number) =>
-  `/hero-seq/frame-${String(i).padStart(3, "0")}.jpg`;
+  asset(`/hero-seq/frame-${String(i).padStart(3, "0")}.jpg`);
 
 const trust = [
   { icon: Wallet, label: "AUD payments" },

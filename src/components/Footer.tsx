@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footerColumns } from "@/content/nav";
 import { site, socials } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2">
               <img
-                src="/MYHitch-Logo-transparent-scaled-e1777265547150.png"
+                src={asset("/MYHitch-Logo-transparent-scaled-e1777265547150.png")}
                 alt="MYHitch Logo"
                 className="h-7 sm:h-8 w-auto object-contain"
               />

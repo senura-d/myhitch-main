@@ -11,12 +11,13 @@ import {
 import { ArrowRight, Store } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+import { asset } from "@/lib/asset";
 
 // Scroll-scrubbed backdrop: the marketplace network animation (240 frames).
 // Scroll down plays forward, scroll up reverses.
 const SEQ_COUNT = 240;
 const seqSrc = (i: number) =>
-  `/market-seq/frame-${String(i).padStart(3, "0")}.jpg`;
+  asset(`/market-seq/frame-${String(i).padStart(3, "0")}.jpg`);
 
 export default function MarketplaceHero() {
   const reduce = useReducedMotion();

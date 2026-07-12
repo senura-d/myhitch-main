@@ -11,12 +11,13 @@ import {
 import { ArrowRight, Handshake } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+import { asset } from "@/lib/asset";
 
 // Scroll-scrubbed backdrop: the handshake animation (179 frames).
 // Scroll down plays forward, scroll up reverses.
 const SEQ_COUNT = 179;
 const seqSrc = (i: number) =>
-  `/partner-seq/frame-${String(i).padStart(3, "0")}.jpg`;
+  asset(`/partner-seq/frame-${String(i).padStart(3, "0")}.jpg`);
 
 export default function PartnerHero() {
   const reduce = useReducedMotion();

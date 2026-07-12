@@ -11,11 +11,12 @@ import {
 import { ArrowRight, Sparkles } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+import { asset } from "@/lib/asset";
 
 // Scroll-scrubbed backdrop: the new ABOUT US letters shimmer animation (192 frames).
 const SEQ_COUNT = 192;
 const seqSrc = (i: number) =>
-  `/about-seq/frame-${String(i).padStart(3, "0")}.jpg`;
+  asset(`/about-seq/frame-${String(i).padStart(3, "0")}.jpg`);
 
 export default function AboutHero() {
   const reduce = useReducedMotion();
