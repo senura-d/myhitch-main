@@ -1,8 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Inter, Geist } from "next/font/google";
 import LenisProvider from "@/components/motion/LenisProvider";
+import WelcomeLoader from "@/components/WelcomeLoader";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+
+// Runs before paint: if the welcome intro was already shown this session,
+// hide the loader instantly so returning visitors never see a flash.
+const NO_FLASH = `try{if(sessionStorage.getItem('myhitch_welcome')==='1'){var s=document.createElement('style');s.appendChild(document.createTextNode('#welcome-loader{display:none!important}'));document.head.appendChild(s);}}catch(e){}`;
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -50,6 +55,8 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", sora.variable, inter.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
+        <script dangerouslySetInnerHTML={{ __html: NO_FLASH }} />
+        <WelcomeLoader />
         <div className="page-ambient" aria-hidden />
         <LenisProvider>{children}</LenisProvider>
       </body>

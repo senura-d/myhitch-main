@@ -18,20 +18,7 @@ function Logo() {
     </Link>
   );
 }
-
-function CurrencyToggle() {
-  const [cur, setCur] = useState<"AUD" | "USD">("AUD");
-  return (
-    <button
-      type="button"
-      onClick={() => setCur((c) => (c === "AUD" ? "USD" : "AUD"))}
-      className="rounded-lg px-2.5 py-1.5 text-sm font-semibold text-black transition-colors hover:bg-black/5"
-      aria-label={`Currency: ${cur}. Toggle currency`}
-    >
-      {cur}
-    </button>
-  );
-}
+import CountrySelector from "@/components/CountrySelector";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -83,19 +70,13 @@ export default function Navbar() {
           {/* Right side: Action buttons and mobile menu trigger */}
           <div className="flex-1 flex items-center justify-end gap-4">
             <div className="hidden items-center gap-2 md:flex">
-              <CurrencyToggle />
+              <CountrySelector />
               <Link
                 href="/login"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-black transition-colors hover:text-navy-800"
               >
                 Sign in
               </Link>
-              <a
-                href={site.storeUrl}
-                className="shiny-btn rounded-full bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-slate-800"
-              >
-                Start Selling
-              </a>
             </div>
 
             <button
@@ -152,12 +133,10 @@ export default function Navbar() {
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-3">
-            <a
-              href={site.storeUrl}
-              className="rounded-full bg-black px-5 py-3.5 text-base font-semibold text-white text-center shadow-md transition hover:bg-slate-800"
-            >
-              Start Selling
-            </a>
+            <div className="flex items-center justify-between border-b border-black/5 pb-3">
+              <span className="text-sm font-medium text-slate-500">Select Country</span>
+              <CountrySelector />
+            </div>
             <Link
               href="/login"
               onClick={() => setOpen(false)}

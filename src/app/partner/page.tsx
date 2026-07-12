@@ -3,7 +3,6 @@ import { Rocket, Wallet, LineChart, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PartnerHero from "@/components/PartnerHero";
-import { PricingCards } from "@/components/sections/MarketplaceCTA";
 import { Reveal, RevealItem } from "@/components/motion/Reveal";
 import { site } from "@/content/site";
 import SectionTransition from "@/components/motion/SectionTransition";
@@ -11,7 +10,7 @@ import SectionTransition from "@/components/motion/SectionTransition";
 export const metadata: Metadata = {
   title: "Become a Partner — MYHitch",
   description:
-    "Sell on MYHitch with zero upfront fees. Choose a 15% commission plan or a $36/year Shop Access plan. Vendor dashboard, secure AUD payouts and more.",
+    "Sell on MYHitch with zero upfront fees. Access your vendor dashboard, secure AUD payouts, and reach buyers across the ecosystem.",
 };
 
 const value = [
@@ -24,7 +23,7 @@ const value = [
 const steps = [
   { n: "01", title: "Create your account", body: "Sign up free and verify your seller identity." },
   { n: "02", title: "List your products", body: "Add unlimited listings with rich media and variants." },
-  { n: "03", title: "Choose your plan", body: "Pay 15% per sale, or $36/year to keep more of every sale." },
+  { n: "03", title: "Set up payouts", body: "Connect your bank details for secure, automated AUD payouts." },
   { n: "04", title: "Start selling", body: "Go live and let the network connect you to buyers." },
 ];
 
@@ -58,26 +57,9 @@ export default function PartnerPage() {
           </section>
         </SectionTransition>
 
-        {/* Pricing */}
-        <SectionTransition variant="lift" parallaxStrength={0.08}>
-          <section id="plans" className="w-full bg-white">
-            <div className="mx-auto max-w-4xl px-5 py-10 sm:py-14 sm:px-8">
-              <Reveal className="mb-8 sm:mb-10 text-center">
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
-                  Simple, fair pricing
-                </h2>
-                <p className="mt-3 text-slate-600">
-                  Two ways to sell. No hidden fees, ever.
-                </p>
-              </Reveal>
-              <PricingCards />
-            </div>
-          </section>
-        </SectionTransition>
-
         {/* Onboarding steps */}
         <SectionTransition variant="iris">
-          <section className="w-full bg-[#f8fafc]">
+          <section id="onboarding" className="w-full bg-[#f8fafc] border-t border-slate-200/60">
             <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14 sm:px-8">
               <Reveal className="mb-8 sm:mb-10 text-center">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Onboarding</p>

@@ -21,36 +21,19 @@ export default function Home() {
         <Hero />
         <PlatformBoxes />
 
-        {/* Section 3+ — each gets a scroll-driven entry + exit animation */}
+        {/* Section 3 — keeps its scroll-driven entry animation */}
         <SectionTransition variant="slide" parallaxStrength={0.06}>
           <PlatformCards />
         </SectionTransition>
 
-        <SectionTransition variant="lift" parallaxStrength={0.1}>
-          <SupplyChain />
-        </SectionTransition>
-
-        <SectionTransition variant="iris">
-          <ActionCards />
-        </SectionTransition>
-
-        <SectionTransition variant="lift" parallaxStrength={0.09}>
-          <CommercialIntelligence />
-        </SectionTransition>
-
+        {/* Sections 4+ — no section transition animation (render as-is) */}
+        <SupplyChain />
+        <ActionCards />
+        <CommercialIntelligence />
         <FeaturesBento />
-
-        <SectionTransition variant="iris">
-          <ShopCategories />
-        </SectionTransition>
-
-        <SectionTransition variant="slide" parallaxStrength={0.06}>
-          <WhoWeServe />
-        </SectionTransition>
-
-        <SectionTransition variant="lift" parallaxStrength={0.08}>
-          <MarketplaceCTA />
-        </SectionTransition>
+        <ShopCategories />
+        <WhoWeServe />
+        <MarketplaceCTA />
       </main>
       <Footer />
     </>

@@ -1,25 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import {
   motion,
   useScroll,
   useSpring,
   useTransform,
-  useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion";
-import { asset } from "@/lib/asset";
+import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
 
-const VIDEO_SRC = asset("/card%20animation%20.mp4");
+const SEQ_COUNT = 149;
+const seqSrc = (i: number) =>
+  `/card-seq/frame-${String(i - 1).padStart(3, "0")}.jpg`;
 
 export default function PlatformBoxes() {
   const reduce = useReducedMotion();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const durationRef = useRef(0);
-  const targetProgressRef = useRef(0);
 
   // ── Scrub progress while the section is pinned ──
   const { scrollYProgress } = useScroll({
@@ -33,9 +30,7 @@ export default function PlatformBoxes() {
     mass: 0.4,
   });
 
-  // ── Entry transition: a full-bleed zoom — the video starts zoomed-in
-  //    (always covering the viewport, so no background/border shows) and
-  //    settles to 1 as the section rises into view. No gaps between sections. ──
+  // ── Entry transition: a full-bleed zoom ──
   const { scrollYProgress: entryProgress } = useScroll({
     target: wrapperRef,
     offset: ["start end", "start start"],
@@ -47,78 +42,10 @@ export default function PlatformBoxes() {
   });
   const zoomScale = useTransform(entry, [0, 1], [1.25, 1]);
 
-  // Feed the smoothed progress into the seek loop.
-  useMotionValueEvent(smoothProgress, "change", (v) => {
-    targetProgressRef.current = v;
-  });
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let blobUrl = "";
-    let rafId = 0;
-    let lastSeek = -1;
-    let lastTick = 0;
-    const FRAME_MS = 1000 / 30; // seek at most 30×/sec — lets the decoder breathe
-
-    const onMeta = () => {
-      durationRef.current = video.duration || 0;
-    };
-    video.addEventListener("loadedmetadata", onMeta);
-
-    // Smoothly seek toward the spring-smoothed scroll target.
-    const tick = (now: number) => {
-      rafId = requestAnimationFrame(tick);
-      if (now - lastTick < FRAME_MS) return;
-      lastTick = now;
-
-      const dur = durationRef.current;
-      if (!dur || video.readyState < 2) return;
-
-      const time = Math.max(0, Math.min(dur - 0.05, targetProgressRef.current * dur));
-      // Skip micro-seeks (< ~1 frame) so we don't thrash the decoder.
-      if (Math.abs(time - lastSeek) < 1 / 60) return;
-      lastSeek = time;
-
-      const v = video as HTMLVideoElement & { fastSeek?: (t: number) => void };
-      if (typeof v.fastSeek === "function") v.fastSeek(time);
-      else video.currentTime = time;
-    };
-
-    const start = () => {
-      video.pause();
-      rafId = requestAnimationFrame(tick);
-    };
-
-    // Prefetch the whole file as a Blob so seeks are instant.
-    fetch(VIDEO_SRC)
-      .then((r) => r.blob())
-      .then((blob) => {
-        blobUrl = URL.createObjectURL(blob);
-        video.src = blobUrl;
-        video.load();
-        video.addEventListener("canplay", start, { once: true });
-        video.play().catch(() => {});
-      })
-      .catch(() => {
-        video.src = VIDEO_SRC;
-        video.load();
-        video.addEventListener("canplay", start, { once: true });
-        video.play().catch(() => {});
-      });
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      video.removeEventListener("loadedmetadata", onMeta);
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
-    };
-  }, []);
-
   return (
     /*
-     * 300vh wrapper gives scroll distance to scrub the video; the inner
-     * sticky div stays pinned while the video plays through with scroll.
+     * 300vh wrapper gives scroll distance to scrub; the inner
+     * sticky div stays pinned while the image sequence plays.
      */
     <div
       ref={wrapperRef}
@@ -126,7 +53,7 @@ export default function PlatformBoxes() {
       className="relative bg-[#001B48]"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Video zooms in (grows to fill) as the section rises into view */}
+        {/* Sequence zooms in as the section rises into view */}
         <motion.div
           className="absolute inset-0"
           style={
@@ -135,22 +62,15 @@ export default function PlatformBoxes() {
               : { scale: zoomScale, transformOrigin: "50% 50%", willChange: "transform" }
           }
         >
-          <video
-            ref={videoRef}
+          <ScrollImageSequence
+            progress={smoothProgress}
+            frameCount={SEQ_COUNT}
+            srcFor={seqSrc}
             className="absolute inset-0 h-full w-full object-cover"
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden
-            onPlay={(e) => {
-              const v = e.currentTarget;
-              if (v.currentTime > 0.15) v.pause();
-            }}
           />
         </motion.div>
 
-        {/* Bottom-right CTA — frosted white/70 button; also masks the video's
-            (moving) blur mark with an intentional, on-brand focal point. */}
+        {/* Bottom-right CTA button */}
         <div className="pointer-events-none absolute inset-0 z-10 flex items-end justify-end p-5 sm:p-10 lg:p-16">
           <a
             href="/platforms"

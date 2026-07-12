@@ -1,63 +1,7 @@
 "use client";
 
-import { Check } from "lucide-react";
-import { plans } from "@/content/plans";
 import { site } from "@/content/site";
 import { Reveal, RevealItem } from "@/components/motion/Reveal";
-
-export function PricingCards() {
-  return (
-    <Reveal stagger className="grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2">
-      {plans.map((plan) => (
-        <RevealItem key={plan.name} className="h-full">
-          <div
-            className={`bg-white/40 border border-black/15 backdrop-blur-md rounded-3xl relative flex h-full flex-col p-6 sm:p-8 shadow-md shadow-slate-200/80 hover:shadow-lg hover:shadow-slate-300/80 transition-all duration-300 ${
-              plan.featured ? "ring-2 ring-black/25" : ""
-            }`}
-          >
-            {plan.featured && (
-              <span className="absolute right-6 top-6 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-700">
-                Best value
-              </span>
-            )}
-            <h3 className="font-display text-lg font-semibold text-black">
-              {plan.name}
-            </h3>
-            <div className="mt-4 flex items-baseline gap-1.5">
-              <span className="font-display text-4xl sm:text-5xl font-semibold text-black">
-                {plan.price}
-              </span>
-              <span className="text-sm font-medium text-slate-600">
-                {plan.cadence}
-              </span>
-            </div>
-            <p className="mt-3 text-sm text-slate-700">{plan.summary}</p>
-
-            <ul className="mt-6 flex-1 space-y-3">
-              {plan.perks.map((perk) => (
-                <li key={perk} className="flex items-start gap-3 text-sm text-slate-800">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-black/10 text-black border border-black/15">
-                    <Check size={13} strokeWidth={3} />
-                  </span>
-                  {perk}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={site.storeUrl}
-              className={`btn mt-6 sm:mt-8 rounded-full px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base border transition-all ${
-                plan.featured ? "btn-primary" : "border-slate-200 text-black hover:bg-slate-50"
-              }`}
-            >
-              {plan.cta}
-            </a>
-          </div>
-        </RevealItem>
-      ))}
-    </Reveal>
-  );
-}
 
 export default function MarketplaceCTA() {
   return (
@@ -104,10 +48,6 @@ export default function MarketplaceCTA() {
           </RevealItem>
         </Reveal>
 
-        <div className="mx-auto mt-10 sm:mt-12 max-w-4xl">
-          <PricingCards />
-        </div>
-
         <Reveal className="mt-14 sm:mt-20">
           <div className="text-center max-w-2xl mx-auto px-2 sm:px-4">
             <h3 className="font-display text-xl sm:text-2xl md:text-4xl font-semibold text-black">
@@ -123,12 +63,6 @@ export default function MarketplaceCTA() {
                 className="btn btn-primary px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-center"
               >
                 Start selling free
-              </a>
-              <a
-                href="/partner"
-                className="btn border border-slate-200 text-black hover:bg-slate-50 px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-center"
-              >
-                Compare plans
               </a>
             </div>
           </div>

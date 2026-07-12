@@ -18,11 +18,17 @@ export default function ScrollImageSequence({
   frameCount,
   srcFor,
   className = "",
+  poster = false,
+  posterFrame,
 }: {
   progress: MotionValue<number>;
   frameCount: number;
   srcFor: (i: number) => string;
   className?: string;
+  /** Mobile/low-power: show a single static frame, skip all preloading. */
+  poster?: boolean;
+  /** 1-based frame to use as the static poster (defaults to the last frame). */
+  posterFrame?: number;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
@@ -34,6 +40,7 @@ export default function ScrollImageSequence({
   });
 
   useEffect(() => {
+    if (poster) return; // no canvas / no preload in poster mode
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -112,7 +119,20 @@ export default function ScrollImageSequence({
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, [frameCount, srcFor]);
+  }, [frameCount, srcFor, poster]);
+
+  // Poster mode: a single lightweight image, no sequence download.
+  if (poster) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return (
+      <img
+        src={srcFor(posterFrame ?? frameCount)}
+        alt=""
+        aria-hidden
+        className={`${className} object-cover`}
+      />
+    );
+  }
 
   return <canvas ref={canvasRef} className={className} aria-hidden />;
 }

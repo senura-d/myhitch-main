@@ -6,12 +6,14 @@ import {
   useScroll,
   useSpring,
   useTransform,
+  useMotionValue,
   useReducedMotion,
 } from "framer-motion";
 import { ShieldCheck, Wallet, Sparkles } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
 import { asset } from "@/lib/asset";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 
 // Scroll-scrubbed backdrop: the MYHITCH build-up animation as an image
 // sequence. Part 1 = frames 1→65 (chip rotates to centre), part 2 = 66→218
@@ -60,6 +62,7 @@ function MaskWord({
 
 export default function Hero() {
   const reduce = useReducedMotion();
+  const isDesktop = useIsDesktop();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Scroll progress across the tall wrapper (0 at top → 1 when scrolled through).
@@ -69,11 +72,15 @@ export default function Hero() {
   });
 
   // Spring-smoothed progress = buttery, lag-eased motion (no scroll jitter).
-  const p = useSpring(scrollYProgress, {
+  const pSpring = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 30,
     mass: 0.4,
   });
+  // On mobile the scrub is disabled (static poster), so freeze progress at 0 —
+  // the intro copy shows at rest and nothing animates on scroll.
+  const pStatic = useMotionValue(0);
+  const p = isDesktop ? pSpring : pStatic;
 
   // Part boundary (frame 65 of 218) sits at ~0.30 of scroll progress — the
   // text phases switch there, in step with the backdrop's two parts.
@@ -100,13 +107,22 @@ export default function Hero() {
   });
 
   return (
-    <div ref={wrapperRef} style={{ height: "400vh" }} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-white">
-        {/* Scroll-scrubbed image-sequence backdrop (218 frames, 2 parts) */}
+    <div
+      ref={wrapperRef}
+      style={isDesktop ? { height: "400vh" } : undefined}
+      className="relative"
+    >
+      <div
+        className={`${
+          isDesktop ? "sticky top-0 h-screen" : "min-h-[92vh]"
+        } w-full overflow-hidden bg-white`}
+      >
+        {/* Scroll-scrubbed backdrop on desktop; a single static poster on mobile */}
         <ScrollImageSequence
           progress={p}
           frameCount={SEQ_COUNT}
           srcFor={seqSrc}
+          poster={!isDesktop}
           className="absolute inset-0 z-0 h-full w-full"
         />
 
@@ -121,7 +137,7 @@ export default function Hero() {
 
         {/* Frame 1 tagline — upper-left, slides up out of frame on scroll */}
         <motion.div
-          className="pointer-events-none absolute left-0 top-[18%] sm:top-[22%] z-10 w-full px-5 sm:px-10 lg:px-16"
+          className="pointer-events-none absolute left-0 top-[30%] sm:top-[36%] z-10 w-full px-5 sm:px-10 lg:px-16"
           style={reduce ? { opacity: 0 } : { y: taglineY, opacity: taglineOpacity }}
         >
           <motion.p

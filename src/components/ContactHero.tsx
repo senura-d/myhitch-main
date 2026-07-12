@@ -6,12 +6,14 @@ import {
   useScroll,
   useSpring,
   useTransform,
+  useMotionValue,
   useReducedMotion,
 } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { site } from "@/content/site";
 import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
 import { asset } from "@/lib/asset";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 
 // Scroll-scrubbed backdrop: the two rotating contact icons (123 frames).
 // Scroll down plays forward, scroll up reverses.
@@ -21,17 +23,21 @@ const seqSrc = (i: number) =>
 
 export default function ContactHero() {
   const reduce = useReducedMotion();
+  const isDesktop = useIsDesktop();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
     offset: ["start start", "end start"],
   });
-  const p = useSpring(scrollYProgress, {
+  const pSpring = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 30,
     mass: 0.4,
   });
+  // Mobile shows a static poster, so freeze progress at 0 (intro copy at rest).
+  const pStatic = useMotionValue(0);
+  const p = isDesktop ? pSpring : pStatic;
 
   // Intro copy slides out as you scroll into the animation.
   const copyY = useTransform(p, [0, 0.3], [0, 900]);
@@ -52,13 +58,22 @@ export default function ContactHero() {
   });
 
   return (
-    <div ref={wrapperRef} style={{ height: "320vh" }} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-white">
-        {/* Scroll-scrubbed image-sequence backdrop */}
+    <div
+      ref={wrapperRef}
+      style={isDesktop ? { height: "320vh" } : undefined}
+      className="relative"
+    >
+      <div
+        className={`${
+          isDesktop ? "sticky top-0 h-screen" : "min-h-[88vh]"
+        } w-full overflow-hidden bg-white`}
+      >
+        {/* Scroll-scrubbed backdrop on desktop; a single static poster on mobile */}
         <ScrollImageSequence
           progress={p}
           frameCount={SEQ_COUNT}
           srcFor={seqSrc}
+          poster={!isDesktop}
           className="absolute inset-0 z-0 h-full w-full"
         />
 
