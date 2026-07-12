@@ -37,53 +37,55 @@ export default function MarketplacePage() {
       <main className="relative flex-1">
         <MarketplaceHero />
 
-        {/* Trust row */}
-        <section className="mx-auto max-w-5xl px-5 pb-6 sm:px-8">
-          <Reveal className="glass-soft flex flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 py-4">
-            {trust.map((t) => (
-              <span
-                key={t.label}
-                className="flex items-center gap-2 text-sm font-medium text-frost-soft"
-              >
-                <t.icon size={16} className="text-blue-600" />
-                {t.label}
-              </span>
-            ))}
-          </Reveal>
-        </section>
-
-        {/* Categories */}
-        <SectionTransition variant="slide" parallaxStrength={0.06}>
-          <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
-            <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {categories.map((c, i) => (
-                <RevealItem key={c.name} id={c.href.split("#")[1]}>
-                  <a
-                    href={site.storeUrl}
-                    className="group relative block h-60 overflow-hidden rounded-3xl shadow-lg"
+        {/* Categories Section (White Backdrop) */}
+        <section className="w-full bg-[#f8fafc] border-y border-slate-200/50 py-16">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            
+            {/* Trust row (Light version) */}
+            <div className="mb-12 flex justify-center">
+              <Reveal className="bg-white border border-slate-200/80 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 py-4 rounded-3xl shadow-sm">
+                {trust.map((t) => (
+                  <span
+                    key={t.label}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-800"
                   >
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 transition-transform duration-500 group-hover:scale-110"
-                      style={{ background: arts[i % arts.length] }}
-                    />
-                    <div className="absolute inset-0 flex flex-col justify-between p-6">
-                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-white backdrop-blur">
-                        <c.icon size={22} />
-                      </span>
-                      <div className="glass-soft px-4 py-3">
-                        <h3 className="font-display font-semibold text-frost">
-                          {c.name}
-                        </h3>
-                        <p className="text-xs text-slate-500">{c.blurb}</p>
+                    <t.icon size={16} className="text-blue-600" />
+                    {t.label}
+                  </span>
+                ))}
+              </Reveal>
+            </div>
+
+            {/* Category Cards (White Cards, Black Text) */}
+            <SectionTransition variant="slide" parallaxStrength={0.06}>
+              <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {categories.map((c) => (
+                  <RevealItem key={c.name} id={c.href.split("#")[1]}>
+                    <a
+                      href={site.storeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative block h-60 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-md shadow-slate-100 hover:shadow-xl hover:shadow-slate-200 transition-all duration-300"
+                    >
+                      <div className="absolute inset-0 flex flex-col justify-between p-6">
+                        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 border border-blue-100/50">
+                          <c.icon size={22} />
+                        </span>
+                        <div className="bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3 transition-colors group-hover:border-blue-100 group-hover:bg-blue-50/30">
+                          <h3 className="font-display font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            {c.name}
+                          </h3>
+                          <p className="text-xs text-slate-600 mt-1 font-medium">{c.blurb}</p>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </RevealItem>
-              ))}
-            </Reveal>
-          </section>
-        </SectionTransition>
+                    </a>
+                  </RevealItem>
+                ))}
+              </Reveal>
+            </SectionTransition>
+
+          </div>
+        </section>
 
         {/* CTA */}
         <SectionTransition variant="lift" parallaxStrength={0.08}>
