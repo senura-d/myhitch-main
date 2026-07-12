@@ -92,9 +92,9 @@ export default function PlatformsPage() {
             <section
               key={p.slug}
               id={p.slug}
-              className={`w-full py-16 md:py-24 transition-colors duration-300 ${sectionTheme}`}
+              className={`w-full py-12 sm:py-16 md:py-24 transition-colors duration-300 ${sectionTheme}`}
             >
-              <div className="mx-auto max-w-7xl px-5 sm:px-8 grid gap-12 md:grid-cols-12 items-center">
+              <div className="mx-auto max-w-7xl px-5 sm:px-8 grid gap-8 sm:gap-12 md:grid-cols-12 items-center">
                 {/* Visual Panel */}
                 <div className={`col-span-12 md:col-span-6 flex justify-center ${!isEven ? "md:order-1" : "md:order-2"}`}>
                   <Reveal y={50} className="w-full flex justify-center">
@@ -182,10 +182,10 @@ export default function PlatformsPage() {
         })}
 
         {/* Section 10: White Background Footer CTA Section */}
-        <section className="w-full py-20 text-center bg-section-white">
+        <section className="w-full py-14 sm:py-20 text-center bg-section-white">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <Reveal className="bg-slate-500/10 border border-black/10 shadow-md p-8 sm:p-12 max-w-3xl mx-auto space-y-6 rounded-3xl backdrop-blur-md">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-black">
+            <Reveal className="bg-slate-500/10 border border-black/10 shadow-md p-6 sm:p-8 md:p-12 max-w-3xl mx-auto space-y-5 sm:space-y-6 rounded-3xl backdrop-blur-md">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-black">
                 Ready to explore Australia&apos;s intelligent marketplace?
               </h2>
               <p className="text-slate-800 max-w-xl mx-auto text-sm sm:text-base">
@@ -196,7 +196,7 @@ export default function PlatformsPage() {
                   href={site.storeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary rounded-full px-8 py-4 text-base"
+                  className="btn btn-primary rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
                 >
                   Explore the Marketplace
                 </a>

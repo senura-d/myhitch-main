@@ -46,18 +46,18 @@ export default function BrandsPage() {
           </Reveal>
         </section>
 
-        <section className="mx-auto max-w-3xl px-5 py-12 text-center sm:px-8">
+        <section className="mx-auto max-w-3xl px-5 py-10 sm:py-12 text-center sm:px-8">
           <Reveal>
-            <h2 className="font-display text-3xl font-semibold tracking-tight text-frost sm:text-4xl">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-frost">
               Put your brand on the network
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-slate-500">
+            <p className="mx-auto mt-3 sm:mt-4 max-w-xl text-sm sm:text-base text-slate-500">
               Join the ecosystem and reach buyers across commerce, travel, events
               and more.
             </p>
             <a
               href={site.storeUrl}
-              className="btn btn-primary mt-8 inline-flex rounded-full px-7 py-4 text-base"
+              className="btn btn-primary mt-6 sm:mt-8 inline-flex rounded-full px-6 sm:px-7 py-3 sm:py-4 text-sm sm:text-base"
             >
               Become a Partner
             </a>

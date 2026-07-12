@@ -26,7 +26,7 @@ export default function ContactPage() {
             id="contact-form"
             className="w-full bg-[#f8fafc]"
           >
-            <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 lg:grid-cols-5">
+            <div className="mx-auto grid max-w-6xl gap-6 sm:gap-8 px-5 py-10 sm:py-14 sm:px-8 lg:grid-cols-5">
             <Reveal className="lg:col-span-3">
               <ContactForm />
             </Reveal>

@@ -75,7 +75,7 @@ const cards = [
 
 export default function ActionCards() {
   return (
-    <section className="cv-auto w-full bg-section-blue py-24">
+    <section className="cv-auto w-full bg-section-blue py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* Header */}
         <Reveal className="mx-auto max-w-2xl text-center" stagger>
@@ -83,13 +83,13 @@ export default function ActionCards() {
             <p className="eyebrow text-white/80">Get Started</p>
           </RevealItem>
           <RevealItem>
-            <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h2 className="font-display mt-3 text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-white">
               Your next move,{" "}
               <span className="text-gradient">made simple.</span>
             </h2>
           </RevealItem>
           <RevealItem>
-            <p className="mt-4 text-lg text-white/70">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-white/70">
               Whether you&apos;re selling, partnering, or exploring — MYHitch
               has a place for you.
             </p>
@@ -97,7 +97,7 @@ export default function ActionCards() {
         </Reveal>
 
         {/* Cards */}
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid gap-5 sm:gap-6 grid-cols-1 md:grid-cols-3">
           {cards.map((card) => (
             <Reveal key={card.title} y={0} className="h-full">
               <Card

@@ -128,7 +128,7 @@ export default function AuthForm() {
       </div>
 
       {/* 2. RIGHT INTERACTIVE FORM PANEL */}
-      <div className="col-span-12 md:col-span-7 p-6 sm:p-10 flex flex-col justify-between bg-white">
+      <div className="col-span-12 md:col-span-7 p-5 sm:p-8 md:p-10 flex flex-col justify-between bg-white">
         
         {/* Toggle Pill Header */}
         <div className="flex justify-between items-center mb-8">

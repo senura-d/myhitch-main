@@ -49,7 +49,7 @@ export default function ScrollImageSequence({
     }
     imagesRef.current = imgs;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2);
 
     const cover = (img: HTMLImageElement) => {
       const cw = canvas.width;

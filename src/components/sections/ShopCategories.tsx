@@ -16,15 +16,15 @@ const arts = [
 
 export default function ShopCategories() {
   return (
-    <section className="cv-auto w-full bg-section-white py-24">
+    <section className="cv-auto w-full bg-section-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="flex flex-wrap items-end justify-between gap-4" stagger>
+        <Reveal className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-end justify-between gap-4" stagger>
           <div>
             <RevealItem>
               <p className="eyebrow text-slate-500">MYHitch Mart</p>
             </RevealItem>
             <RevealItem>
-              <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-black sm:text-5xl">
+              <h2 className="font-display mt-3 text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-black">
                 Shop by <span className="text-gradient">category</span>
               </h2>
             </RevealItem>
@@ -39,12 +39,12 @@ export default function ShopCategories() {
           </RevealItem>
         </Reveal>
 
-        <Reveal stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal stagger className="mt-10 sm:mt-12 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => (
             <RevealItem key={c.name}>
               <a
                 href={c.href}
-                className="group relative block h-56 overflow-hidden rounded-3xl border border-black/15 bg-white/40 backdrop-blur-md hover:bg-white/50 transition-all duration-300 shadow-md shadow-slate-200/80 hover:shadow-lg hover:shadow-slate-300/80 cursor-pointer"
+                className="group relative block h-44 sm:h-56 overflow-hidden rounded-3xl border border-black/15 bg-white/40 backdrop-blur-md hover:bg-white/50 transition-all duration-300 shadow-md shadow-slate-200/80 hover:shadow-lg hover:shadow-slate-300/80 cursor-pointer"
               >
                 <div className="absolute inset-0 flex flex-col justify-between p-6">
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-black/10 border border-black/10 text-black">

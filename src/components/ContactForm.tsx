@@ -29,7 +29,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-slate-200/80 bg-white p-8 shadow-md sm:p-10">
+    <form onSubmit={onSubmit} className="space-y-4 sm:space-y-5 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-md sm:p-8 md:p-10">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label="Name" type="text" autoComplete="name" />
         <Field id="email" label="Email" type="email" autoComplete="email" />

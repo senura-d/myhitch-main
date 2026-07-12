@@ -38,8 +38,8 @@ export default function PartnerPage() {
         {/* Value props */}
         <SectionTransition variant="slide" parallaxStrength={0.05}>
           <section className="w-full bg-[#f8fafc]">
-            <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
-              <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto max-w-7xl px-5 py-10 sm:py-14 sm:px-8">
+              <Reveal stagger className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 {value.map((v) => (
                   <RevealItem key={v.title} className="h-full">
                     <div className="h-full rounded-2xl border border-slate-200/80 bg-white p-6 shadow-md transition hover:shadow-lg">
@@ -61,9 +61,9 @@ export default function PartnerPage() {
         {/* Pricing */}
         <SectionTransition variant="lift" parallaxStrength={0.08}>
           <section id="plans" className="w-full bg-white">
-            <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8">
-              <Reveal className="mb-10 text-center">
-                <h2 className="font-display text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+            <div className="mx-auto max-w-4xl px-5 py-10 sm:py-14 sm:px-8">
+              <Reveal className="mb-8 sm:mb-10 text-center">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
                   Simple, fair pricing
                 </h2>
                 <p className="mt-3 text-slate-600">
@@ -78,14 +78,14 @@ export default function PartnerPage() {
         {/* Onboarding steps */}
         <SectionTransition variant="iris">
           <section className="w-full bg-[#f8fafc]">
-            <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8">
-              <Reveal className="mb-10 text-center">
+            <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14 sm:px-8">
+              <Reveal className="mb-8 sm:mb-10 text-center">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Onboarding</p>
-                <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                <h2 className="font-display mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
                   Live in four steps
                 </h2>
               </Reveal>
-              <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <Reveal stagger className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 {steps.map((s) => (
                   <RevealItem key={s.n} className="h-full">
                     <div className="h-full rounded-2xl border border-slate-200/80 bg-white p-6 shadow-md transition hover:shadow-lg">
@@ -100,10 +100,10 @@ export default function PartnerPage() {
                   </RevealItem>
                 ))}
               </Reveal>
-              <div className="mt-12 text-center">
+              <div className="mt-10 sm:mt-12 text-center">
                 <a
                   href={site.storeUrl}
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-slate-900 bg-slate-900 px-7 py-4 text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-slate-900 bg-slate-900 px-6 sm:px-7 py-3 sm:py-4 text-sm sm:text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
                 >
                   Start selling free
                 </a>

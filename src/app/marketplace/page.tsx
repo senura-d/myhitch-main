@@ -38,12 +38,12 @@ export default function MarketplacePage() {
         <MarketplaceHero />
 
         {/* Categories Section (White Backdrop) */}
-        <section className="w-full bg-[#f8fafc] border-y border-slate-200/50 py-16">
+        <section className="w-full bg-[#f8fafc] border-y border-slate-200/50 py-10 sm:py-16">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             
             {/* Trust row (Light version) */}
-            <div className="mb-12 flex justify-center">
-              <Reveal className="bg-white border border-slate-200/80 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 py-4 rounded-3xl shadow-sm">
+            <div className="mb-8 sm:mb-12 flex justify-center">
+              <Reveal className="bg-white border border-slate-200/80 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-3 px-4 sm:px-6 py-3 sm:py-4 rounded-3xl shadow-sm">
                 {trust.map((t) => (
                   <span
                     key={t.label}
@@ -58,14 +58,14 @@ export default function MarketplacePage() {
 
             {/* Category Cards (White Cards, Black Text) */}
             <SectionTransition variant="slide" parallaxStrength={0.06}>
-              <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <Reveal stagger className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {categories.map((c) => (
                   <RevealItem key={c.name} id={c.href.split("#")[1]}>
                     <a
                       href={site.storeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative block h-60 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-md shadow-slate-100 hover:shadow-xl hover:shadow-slate-200 transition-all duration-300"
+                      className="group relative block h-48 sm:h-60 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-md shadow-slate-100 hover:shadow-xl hover:shadow-slate-200 transition-all duration-300"
                     >
                       <div className="absolute inset-0 flex flex-col justify-between p-6">
                         <span className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 border border-blue-100/50">
@@ -89,21 +89,21 @@ export default function MarketplacePage() {
 
         {/* CTA */}
         <SectionTransition variant="lift" parallaxStrength={0.08}>
-          <section className="mx-auto max-w-3xl px-5 py-12 text-center sm:px-8">
+          <section className="mx-auto max-w-3xl px-5 py-10 sm:py-12 text-center sm:px-8">
             <Reveal>
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-frost sm:text-4xl">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-frost">
                 Ready to shop the ecosystem?
               </h2>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
                 <a
                   href={site.storeUrl}
-                  className="btn btn-primary rounded-full px-7 py-4 text-base"
+                  className="btn btn-primary rounded-full px-6 sm:px-7 py-3 sm:py-4 text-sm sm:text-base text-center"
                 >
                   Visit the store
                 </a>
                 <a
                   href="/partner"
-                  className="btn btn-ghost rounded-full px-7 py-4 text-base"
+                  className="btn btn-ghost rounded-full px-6 sm:px-7 py-3 sm:py-4 text-sm sm:text-base text-center"
                 >
                   Sell on MYHitch
                 </a>

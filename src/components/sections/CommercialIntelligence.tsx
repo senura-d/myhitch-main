@@ -79,28 +79,28 @@ function Dashboard() {
 
 export default function CommercialIntelligence() {
   return (
-    <section className="cv-auto w-full bg-section-white py-24">
+    <section className="cv-auto w-full bg-section-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal stagger>
             <RevealItem>
               <p className="eyebrow text-slate-500">Commercial Intelligence</p>
             </RevealItem>
             <RevealItem>
-              <h2 className="font-display mt-3 text-3xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
+              <h2 className="font-display mt-3 text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-black">
                 Make smarter decisions.
                 <br />
                 <span className="text-gradient">Grow faster. Scale globally.</span>
               </h2>
             </RevealItem>
             <RevealItem>
-              <p className="mt-4 max-w-lg text-lg text-slate-600">
+              <p className="mt-3 sm:mt-4 max-w-lg text-base sm:text-lg text-slate-600">
                 Give your business a live command centre — every sale, customer and
                 forecast in one intelligent dashboard.
               </p>
             </RevealItem>
             <RevealItem>
-              <ul className="mt-6 grid max-w-lg grid-cols-1 gap-2.5 sm:grid-cols-2">
+              <ul className="mt-5 sm:mt-6 grid max-w-lg grid-cols-1 gap-2 sm:gap-2.5 sm:grid-cols-2">
                 {commercialIntelligence.map((c) => (
                   <li
                     key={c}

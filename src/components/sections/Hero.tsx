@@ -120,11 +120,11 @@ export default function Hero() {
 
         {/* Frame 1 tagline — upper-left, slides up out of frame on scroll */}
         <motion.div
-          className="pointer-events-none absolute left-0 top-[22%] z-10 w-full px-6 sm:px-10 lg:px-16"
+          className="pointer-events-none absolute left-0 top-[18%] sm:top-[22%] z-10 w-full px-5 sm:px-10 lg:px-16"
           style={reduce ? { opacity: 0 } : { y: taglineY, opacity: taglineOpacity }}
         >
           <motion.p
-            className="font-display max-w-md text-2xl font-light leading-tight tracking-tight text-black sm:text-3xl lg:text-4xl"
+            className="font-display max-w-md text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight tracking-tight text-black"
             {...fadeUp(0.3)}
           >
             One ecosystem.
@@ -135,7 +135,7 @@ export default function Hero() {
 
         {/* Frame 1 hero copy — bottom-left, slides down out of frame on scroll */}
         <motion.div
-          className="absolute bottom-28 left-0 z-10 w-full px-6 sm:px-10 lg:px-16"
+          className="absolute bottom-16 sm:bottom-28 left-0 z-10 w-full px-5 sm:px-10 lg:px-16"
           style={reduce ? { opacity: 0 } : { y: heroTextY, opacity: heroTextOpacity }}
         >
           <div className="mr-auto max-w-2xl">
@@ -147,18 +147,18 @@ export default function Hero() {
               Australia&apos;s Intelligent Commerce &amp; Supply-Chain Ecosystem
             </motion.p>
 
-            <h1 className="font-display mt-4 text-3xl font-semibold leading-[1.1] tracking-tight text-black sm:text-4xl lg:text-[2.6rem]">
+            <h1 className="font-display mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-semibold leading-[1.1] tracking-tight text-black">
               <span className="sr-only">
                 Hitching the World Together — Digitally
               </span>
-              <span aria-hidden className="flex flex-wrap gap-x-3.5">
+              <span aria-hidden className="flex flex-wrap gap-x-2.5 sm:gap-x-3.5">
                 {line1.map((w, i) => (
                   <MaskWord key={w} delay={0.25 + i * 0.09}>
                     {w}
                   </MaskWord>
                 ))}
               </span>
-              <span aria-hidden className="flex flex-wrap gap-x-3.5">
+              <span aria-hidden className="flex flex-wrap gap-x-2.5 sm:gap-x-3.5">
                 {line2.map((w, i) => (
                   <MaskWord key={w} delay={0.52 + i * 0.09}>
                     {w}
@@ -171,7 +171,7 @@ export default function Hero() {
             </h1>
 
             <motion.p
-              className="mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-black/80"
+              className="mt-3 sm:mt-4 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed text-black/80"
               {...fadeUp(0.7)}
             >
               One platform for commerce, travel, events, services and logistics —
@@ -180,31 +180,31 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              className="mt-6 flex flex-wrap items-center gap-3"
+              className="mt-4 sm:mt-6 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
               {...fadeUp(0.85)}
             >
               <a
                 href="#platforms"
-                className="shiny-btn btn rounded-full bg-[#001B48] px-7 py-3.5 text-base font-bold text-white shadow-xl shadow-[#001B48]/30 transition hover:-translate-y-0.5 hover:bg-[#02457A] cursor-pointer"
+                className="shiny-btn btn rounded-full bg-[#001B48] px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-white shadow-xl shadow-[#001B48]/30 transition hover:-translate-y-0.5 hover:bg-[#02457A] cursor-pointer text-center"
               >
                 Explore the Ecosystem
               </a>
               <a
                 href="/partner"
-                className="btn rounded-full border-2 border-[#001B48] bg-white px-7 py-3.5 text-base font-bold text-[#001B48] shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:bg-[#001B48] hover:text-white"
+                className="btn rounded-full border-2 border-[#001B48] bg-white px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-[#001B48] shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:bg-[#001B48] hover:text-white text-center"
               >
                 Become a Partner
               </a>
             </motion.div>
 
             <motion.ul
-              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#001B48]/10 pt-4"
+              className="mt-4 sm:mt-6 flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-2 border-t border-[#001B48]/10 pt-3 sm:pt-4"
               {...fadeUp(1)}
             >
               {trust.map((t) => (
                 <li
                   key={t.label}
-                  className="flex items-center gap-1.5 text-xs font-medium text-black"
+                  className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-black"
                 >
                   <t.icon size={14} className="text-black" />
                   {t.label}
@@ -219,15 +219,15 @@ export default function Hero() {
           className="pointer-events-none absolute inset-0 z-10 flex items-center"
           style={reduce ? undefined : { y: f2SubY, opacity: f2Opacity }}
         >
-          <div className="w-full px-6 sm:px-10 lg:px-16">
+          <div className="w-full px-5 sm:px-10 lg:px-16">
             <div className="max-w-xl text-left">
               <p className="eyebrow mb-1 text-black">The connected core</p>
-              <h2 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-black sm:text-5xl lg:text-6xl">
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight text-black">
                 This is
                 <br />
                 <span className="aurora-text font-semibold">MYHitch.</span>
               </h2>
-              <p className="mt-6 text-sm sm:text-base leading-relaxed text-black/80 font-medium">
+              <p className="mt-4 sm:mt-6 text-xs sm:text-sm md:text-base leading-relaxed text-black/80 font-medium">
                 Every platform, payment and partner — connected through one intelligent core.
               </p>
             </div>

@@ -10,7 +10,7 @@ import { MagicCard } from "@/components/magicui/MagicCard";
 
 export default function PlatformCards() {
   return (
-    <section className="cv-auto w-full bg-section-blue py-24">
+    <section className="cv-auto w-full bg-section-blue py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         
         {/* Centered Header Section */}
@@ -19,13 +19,13 @@ export default function PlatformCards() {
             <p className="eyebrow">The Ecosystem</p>
           </RevealItem>
           <RevealItem>
-            <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-frost sm:text-5xl">
+            <h2 className="font-display mt-3 text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-frost">
               Eight platforms.{" "}
               <span className="text-gradient">One connection.</span>
             </h2>
           </RevealItem>
           <RevealItem>
-            <p className="mt-4 text-lg text-slate-500">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-500">
               Every part of everyday life — shopping, travel, events, services and
               logistics — hitched together in a single, intelligent network.
             </p>
@@ -33,12 +33,12 @@ export default function PlatformCards() {
         </Reveal>
 
         {/* Platform Cards Grid */}
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 sm:mt-16 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {platforms.map((p) => (
             <Reveal key={p.slug} y={0} className="h-full">
               <Link
                 href={p.href}
-                className="bg-white/30 backdrop-blur-md hover:bg-white/40 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-3xl group flex h-[290px] flex-col p-6 cursor-pointer border border-white/10"
+                className="bg-white/30 backdrop-blur-md hover:bg-white/40 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-3xl group flex h-auto sm:h-[290px] flex-col p-5 sm:p-6 cursor-pointer border border-white/10"
               >
                 <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-white shadow-lg border border-white/20">
                   <p.icon size={22} className="text-white" />

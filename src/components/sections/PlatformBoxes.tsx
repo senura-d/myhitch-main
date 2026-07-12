@@ -150,10 +150,10 @@ export default function PlatformBoxes() {
 
         {/* Bottom-right CTA — frosted white/70 button; also masks the video's
             (moving) blur mark with an intentional, on-brand focal point. */}
-        <div className="pointer-events-none absolute inset-0 z-10 flex items-end justify-end p-6 sm:p-10 lg:p-16">
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-end justify-end p-5 sm:p-10 lg:p-16">
           <a
             href="/platforms"
-            className="shiny-btn pointer-events-auto rounded-full bg-white/70 px-8 py-4 text-base font-bold text-[#001B48] shadow-2xl shadow-black/20 backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-white sm:text-lg"
+            className="shiny-btn pointer-events-auto rounded-full bg-white/70 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold text-[#001B48] shadow-2xl shadow-black/20 backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-white"
           >
             Explore the Platforms →
           </a>

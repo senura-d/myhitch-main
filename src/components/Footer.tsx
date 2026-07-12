@@ -5,18 +5,18 @@ import { site, socials } from "@/content/site";
 export default function Footer() {
   return (
     <footer className="relative bg-section-white border-t border-slate-500/10">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <div className="grid gap-12 lg:grid-cols-12">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
+        <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2">
               <img
                 src="/MYHitch-Logo-transparent-scaled-e1777265547150.png"
                 alt="MYHitch Logo"
-                className="h-8 w-auto object-contain"
+                className="h-7 sm:h-8 w-auto object-contain"
               />
-              <span className="font-display text-lg font-semibold text-frost">{site.name}</span>
+              <span className="font-display text-base sm:text-lg font-semibold text-frost">{site.name}</span>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
+            <p className="mt-3 sm:mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
               {site.tagline} {site.positioning}
             </p>
 

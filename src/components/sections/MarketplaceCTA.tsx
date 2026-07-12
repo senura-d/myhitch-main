@@ -7,11 +7,11 @@ import { Reveal, RevealItem } from "@/components/motion/Reveal";
 
 export function PricingCards() {
   return (
-    <Reveal stagger className="grid gap-6 md:grid-cols-2">
+    <Reveal stagger className="grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2">
       {plans.map((plan) => (
         <RevealItem key={plan.name} className="h-full">
           <div
-            className={`bg-white/40 border border-black/15 backdrop-blur-md rounded-3xl relative flex h-full flex-col p-8 shadow-md shadow-slate-200/80 hover:shadow-lg hover:shadow-slate-300/80 transition-all duration-300 ${
+            className={`bg-white/40 border border-black/15 backdrop-blur-md rounded-3xl relative flex h-full flex-col p-6 sm:p-8 shadow-md shadow-slate-200/80 hover:shadow-lg hover:shadow-slate-300/80 transition-all duration-300 ${
               plan.featured ? "ring-2 ring-black/25" : ""
             }`}
           >
@@ -24,7 +24,7 @@ export function PricingCards() {
               {plan.name}
             </h3>
             <div className="mt-4 flex items-baseline gap-1.5">
-              <span className="font-display text-5xl font-semibold text-black">
+              <span className="font-display text-4xl sm:text-5xl font-semibold text-black">
                 {plan.price}
               </span>
               <span className="text-sm font-medium text-slate-600">
@@ -46,7 +46,7 @@ export function PricingCards() {
 
             <a
               href={site.storeUrl}
-              className={`btn mt-8 rounded-full px-6 py-3.5 text-base border transition-all ${
+              className={`btn mt-6 sm:mt-8 rounded-full px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base border transition-all ${
                 plan.featured ? "btn-primary" : "border-slate-200 text-black hover:bg-slate-50"
               }`}
             >
@@ -61,7 +61,7 @@ export function PricingCards() {
 
 export default function MarketplaceCTA() {
   return (
-    <section id="sell" className="cv-auto w-full bg-section-white py-24 relative overflow-hidden">
+    <section id="sell" className="cv-auto w-full bg-section-white py-16 sm:py-24 relative overflow-hidden">
       {/* Side background decorative elements to fill empty space */}
       <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none select-none">
         {/* Left decoration */}
@@ -91,42 +91,42 @@ export default function MarketplaceCTA() {
             <p className="eyebrow text-slate-500">Become a Seller</p>
           </RevealItem>
           <RevealItem>
-            <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-black sm:text-5xl">
+            <h2 className="font-display mt-3 text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-black">
               Start selling with{" "}
               <span className="text-gradient">zero upfront fees</span>
             </h2>
           </RevealItem>
           <RevealItem>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600">
               Join free and reach buyers across the ecosystem. Free shipping on
               orders over ${site.freeShippingThreshold}.
             </p>
           </RevealItem>
         </Reveal>
 
-        <div className="mx-auto mt-12 max-w-4xl">
+        <div className="mx-auto mt-10 sm:mt-12 max-w-4xl">
           <PricingCards />
         </div>
 
-        <Reveal className="mt-20">
-          <div className="text-center max-w-2xl mx-auto px-4">
-            <h3 className="font-display text-2xl font-semibold text-black sm:text-4xl">
+        <Reveal className="mt-14 sm:mt-20">
+          <div className="text-center max-w-2xl mx-auto px-2 sm:px-4">
+            <h3 className="font-display text-xl sm:text-2xl md:text-4xl font-semibold text-black">
               Ready to grow with MYHitch?
             </h3>
-            <p className="mx-auto mt-4 text-slate-600 max-w-lg">
+            <p className="mx-auto mt-3 sm:mt-4 text-sm sm:text-base text-slate-600 max-w-lg">
               Set up your store in minutes, get paid securely in AUD, and let the
               network do the connecting.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
               <a
                 href={site.storeUrl}
-                className="btn btn-primary px-7 py-4 text-base font-semibold rounded-full"
+                className="btn btn-primary px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-center"
               >
                 Start selling free
               </a>
               <a
                 href="/partner"
-                className="btn border border-slate-200 text-black hover:bg-slate-50 px-7 py-4 text-base font-semibold rounded-full"
+                className="btn border border-slate-200 text-black hover:bg-slate-50 px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-center"
               >
                 Compare plans
               </a>
