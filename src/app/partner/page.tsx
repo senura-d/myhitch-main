@@ -37,71 +37,77 @@ export default function PartnerPage() {
 
         {/* Value props */}
         <SectionTransition variant="slide" parallaxStrength={0.05}>
-          <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
-            <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {value.map((v) => (
-                <RevealItem key={v.title} className="h-full">
-                  <div className="glass glass-sheen h-full p-6">
-                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-navy-800 text-white shadow-lg">
-                      <v.icon size={22} />
-                    </span>
-                    <h3 className="font-display mt-4 text-lg font-semibold text-frost">
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-500">{v.body}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </Reveal>
+          <section className="w-full bg-[#f8fafc]">
+            <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+              <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {value.map((v) => (
+                  <RevealItem key={v.title} className="h-full">
+                    <div className="h-full rounded-2xl border border-slate-200/80 bg-white p-6 shadow-md transition hover:shadow-lg">
+                      <span className="grid h-12 w-12 place-items-center rounded-2xl border border-slate-200/60 bg-slate-50 text-slate-800">
+                        <v.icon size={22} />
+                      </span>
+                      <h3 className="font-display mt-4 text-lg font-semibold text-slate-900">
+                        {v.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-slate-600">{v.body}</p>
+                    </div>
+                  </RevealItem>
+                ))}
+              </Reveal>
+            </div>
           </section>
         </SectionTransition>
 
         {/* Pricing */}
         <SectionTransition variant="lift" parallaxStrength={0.08}>
-          <section id="plans" className="mx-auto max-w-4xl px-5 py-12 sm:px-8">
-            <Reveal className="mb-10 text-center">
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-frost sm:text-4xl">
-                Simple, fair pricing
-              </h2>
-              <p className="mt-3 text-slate-500">
-                Two ways to sell. No hidden fees, ever.
-              </p>
-            </Reveal>
-            <PricingCards />
+          <section id="plans" className="w-full bg-white">
+            <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8">
+              <Reveal className="mb-10 text-center">
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                  Simple, fair pricing
+                </h2>
+                <p className="mt-3 text-slate-600">
+                  Two ways to sell. No hidden fees, ever.
+                </p>
+              </Reveal>
+              <PricingCards />
+            </div>
           </section>
         </SectionTransition>
 
         {/* Onboarding steps */}
         <SectionTransition variant="iris">
-          <section className="mx-auto max-w-5xl px-5 py-12 sm:px-8">
-            <Reveal className="mb-10 text-center">
-              <p className="eyebrow">Onboarding</p>
-              <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-frost sm:text-4xl">
-                Live in four steps
-              </h2>
-            </Reveal>
-            <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {steps.map((s) => (
-                <RevealItem key={s.n} className="h-full">
-                  <div className="glass h-full p-6">
-                    <span className="font-display text-3xl font-semibold text-blue-400">
-                      {s.n}
-                    </span>
-                    <h3 className="font-display mt-3 text-lg font-semibold text-frost">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-500">{s.body}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </Reveal>
-            <div className="mt-12 text-center">
-              <a
-                href={site.storeUrl}
-                className="btn btn-primary rounded-full px-7 py-4 text-base"
-              >
-                Start selling free
-              </a>
+          <section className="w-full bg-[#f8fafc]">
+            <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8">
+              <Reveal className="mb-10 text-center">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Onboarding</p>
+                <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                  Live in four steps
+                </h2>
+              </Reveal>
+              <Reveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {steps.map((s) => (
+                  <RevealItem key={s.n} className="h-full">
+                    <div className="h-full rounded-2xl border border-slate-200/80 bg-white p-6 shadow-md transition hover:shadow-lg">
+                      <span className="font-display text-3xl font-semibold text-blue-600">
+                        {s.n}
+                      </span>
+                      <h3 className="font-display mt-3 text-lg font-semibold text-slate-900">
+                        {s.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-slate-600">{s.body}</p>
+                    </div>
+                  </RevealItem>
+                ))}
+              </Reveal>
+              <div className="mt-12 text-center">
+                <a
+                  href={site.storeUrl}
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-slate-900 bg-slate-900 px-7 py-4 text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
+                >
+                  Start selling free
+                </a>
+              </div>
             </div>
           </section>
         </SectionTransition>

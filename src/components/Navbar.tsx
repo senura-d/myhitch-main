@@ -91,7 +91,7 @@ export default function Navbar() {
               </Link>
               <a
                 href={site.storeUrl}
-                className="shiny-btn btn btn-primary rounded-full px-4 py-2 text-sm"
+                className="shiny-btn rounded-full bg-black px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-slate-800"
               >
                 Start Selling
               </a>
@@ -153,7 +153,7 @@ export default function Navbar() {
           <div className="mt-8 flex flex-col gap-3">
             <a
               href={site.storeUrl}
-              className="btn btn-primary rounded-full px-5 py-3.5 text-base"
+              className="rounded-full bg-black px-5 py-3.5 text-base font-semibold text-white text-center shadow-md transition hover:bg-slate-800"
             >
               Start Selling
             </a>

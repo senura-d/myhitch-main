@@ -24,30 +24,31 @@ export default function ContactPage() {
         <SectionTransition variant="slide" parallaxStrength={0.05}>
           <section
             id="contact-form"
-            className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 lg:grid-cols-5"
+            className="w-full bg-[#f8fafc]"
           >
+            <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 lg:grid-cols-5">
             <Reveal className="lg:col-span-3">
               <ContactForm />
             </Reveal>
 
             <Reveal className="space-y-5 lg:col-span-2">
-              <div className="glass p-7">
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-7 shadow-md">
                 <ul className="space-y-5">
                   <li className="flex items-start gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-600/10 text-blue-600">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200/60 bg-slate-50 text-slate-800">
                       <MapPin size={20} />
                     </span>
                     <div>
-                      <p className="font-semibold text-frost">Head office</p>
-                      <p className="text-sm text-slate-500">{site.address}</p>
+                      <p className="font-semibold text-slate-900">Head office</p>
+                      <p className="text-sm text-slate-600">{site.address}</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-600/10 text-blue-600">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200/60 bg-slate-50 text-slate-800">
                       <Mail size={20} />
                     </span>
                     <div>
-                      <p className="font-semibold text-frost">Email</p>
+                      <p className="font-semibold text-slate-900">Email</p>
                       <a
                         href={`mailto:${site.email}`}
                         className="text-sm text-blue-600 hover:underline"
@@ -57,19 +58,19 @@ export default function ContactPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-600/10 text-blue-600">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200/60 bg-slate-50 text-slate-800">
                       <Clock size={20} />
                     </span>
                     <div>
-                      <p className="font-semibold text-frost">Hours</p>
-                      <p className="text-sm text-slate-500">Mon–Fri, 9am–5pm ACST</p>
+                      <p className="font-semibold text-slate-900">Hours</p>
+                      <p className="text-sm text-slate-600">Mon–Fri, 9am–5pm ACST</p>
                     </div>
                   </li>
                 </ul>
               </div>
 
-              <div className="glass p-7">
-                <p className="font-semibold text-frost">Follow along</p>
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-7 shadow-md">
+                <p className="font-semibold text-slate-900">Follow along</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {socials.map((s) => (
                     <a
@@ -77,7 +78,7 @@ export default function ContactPage() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-blue-600/20 bg-white/60 px-4 py-2 text-sm font-medium text-frost-soft transition-colors hover:text-blue-600"
+                      className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100 hover:text-blue-600"
                     >
                       {s.label}
                     </a>
@@ -85,6 +86,7 @@ export default function ContactPage() {
                 </div>
               </div>
             </Reveal>
+          </div>
           </section>
         </SectionTransition>
       </main>
