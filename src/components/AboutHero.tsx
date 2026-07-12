@@ -1,0 +1,127 @@
+"use client";
+
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { site } from "@/content/site";
+import ScrollImageSequence from "@/components/motion/ScrollImageSequence";
+
+// Scroll-scrubbed backdrop: the about loop animation. The first 20 frames are
+// a near-blank blue fade-in, so we skip them and start at frame 21 (172 frames).
+const SEQ_COUNT = 172;
+const seqSrc = (i: number) =>
+  `/about-seq/frame-${String(i + 20).padStart(3, "0")}.jpg`;
+
+export default function AboutHero() {
+  const reduce = useReducedMotion();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ["start start", "end start"],
+  });
+  const p = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.4,
+  });
+
+  // Intro copy slides out as you scroll into the animation.
+  const copyY = useTransform(p, [0, 0.3], [0, 900]);
+
+  const fadeUp = (delay: number) => ({
+    initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: reduce ? 0.2 : 0.8,
+      delay,
+      ease: [0.19, 1, 0.22, 1] as const,
+    },
+  });
+
+  return (
+    <div ref={wrapperRef} style={{ height: "320vh" }} className="relative">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#4b6f96]">
+        {/* Scroll-scrubbed image-sequence backdrop. A light blur (+ slight
+            upscale to keep blurred edges off-screen) masks the placeholder
+            label text on the moving folders without hiding the scene. */}
+        <ScrollImageSequence
+          progress={p}
+          frameCount={SEQ_COUNT}
+          srcFor={seqSrc}
+          className="absolute inset-0 z-0 h-full w-full scale-110 blur-[5px]"
+        />
+
+        {/* Dark left wash so the white copy stays legible over the blue scene */}
+        <div
+          className="absolute inset-0 z-5 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(2,20,50,0.62) 0%, rgba(2,20,50,0.25) 45%, rgba(2,20,50,0) 72%)",
+          }}
+        />
+
+        {/* Intro copy — left, vertically centered; slides out on scroll */}
+        <motion.div
+          className="absolute inset-0 z-10 flex items-center"
+          style={reduce ? { opacity: 0 } : { y: copyY }}
+        >
+          <div className="w-full px-6 sm:px-10 lg:px-16">
+            <div className="max-w-xl text-left">
+              <motion.div
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-sm"
+                {...fadeUp(0.1)}
+              >
+                <Sparkles size={13} className="animate-pulse text-[#9BE0FF]" />
+                <span>About MYHitch</span>
+              </motion.div>
+
+              <motion.h1
+                className="font-display mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl"
+                {...fadeUp(0.25)}
+              >
+                Hitching the world together,
+                <br />
+                <span className="text-[#9BE0FF]">digitally.</span>
+              </motion.h1>
+
+              <motion.p
+                className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+                {...fadeUp(0.4)}
+              >
+                {site.positioning} Proudly built in {site.address}.
+              </motion.p>
+
+              <motion.div
+                className="mt-8 flex flex-wrap items-center gap-3"
+                {...fadeUp(0.55)}
+              >
+                <a
+                  href="/platforms"
+                  className="shiny-btn btn rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#001B48] shadow-xl shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#e8f4fb] cursor-pointer"
+                >
+                  Explore the Ecosystem
+                  <ArrowRight size={16} />
+                </a>
+                <a
+                  href="/contact"
+                  className="btn rounded-full border-2 border-white bg-transparent px-6 py-3.5 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#001B48]"
+                >
+                  Get in touch
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
+        <span className="sr-only">{site.positioning}</span>
+      </div>
+    </div>
+  );
+}

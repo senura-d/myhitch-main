@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MYHitch — Homepage
 
-## Getting Started
+A premium, luxury-tech marketing homepage for **MYHitch**, a connected commerce
+platform. Clean white/blue theme, a Three.js 3D hero, liquid-glass UI, and
+GSAP scroll motion.
 
-First, run the development server:
+## Tech stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** — design tokens + liquid-glass utilities in `src/app/globals.css`
+- **Three.js** via `@react-three/fiber` + `@react-three/drei` — the hero scene
+- **GSAP** + **ScrollTrigger** — scroll-reveal motion
+
+## Structure
+
+```
+src/
+  app/
+    layout.tsx        # fonts, metadata, ambient background
+    page.tsx          # all homepage sections
+    globals.css       # theme tokens, .glass / .glass-soft / .glass-pill, buttons
+  components/
+    HeroScene.tsx     # Three.js scene: product boxes, category panels, connection lines
+    HeroCanvas.tsx    # lazy (ssr:false) wrapper for the canvas
+    Navbar.tsx        # frosted glass sticky nav
+    Reveal.tsx        # GSAP ScrollTrigger reveal (supports stagger via [data-reveal])
+    GlassCard.tsx     # reusable liquid-glass card
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Develop
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build
 
-## Learn More
+```bash
+npm run build && npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy (free)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This is a standard static-friendly Next.js app — deploy free on **Vercel**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Install the CLI (once): `npm i -g vercel`
+2. From this folder: `vercel` (first run links/creates the project), then
+   `vercel --prod` for a production URL.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Alternatively push to GitHub and import the repo at
+[vercel.com/new](https://vercel.com/new) — every push gets a free preview URL.
+Netlify and Cloudflare Pages also offer free Next.js hosting.
